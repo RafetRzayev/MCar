@@ -1,0 +1,106 @@
+﻿<Window x:Class="MCar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        xmlns:ViewModels="clr-namespace:MCar.ViewModel" 
+        xmlns:view="clr-namespace:MCar.View"
+        FontSize="15" Height="700" Width="1152" 
+        MinHeight="602"
+        MinWidth="1052"
+        WindowStyle="SingleBorderWindow"  WindowState="Maximized" Title="MCar sistem">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type ViewModels:CarViewModel}">
+                <view:CarView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:ContractViewModel}">
+                <view:ContractView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:ReportViewModel}">
+                <view:ReportView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:NotificationViewModel}">
+                <view:NotificationView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:PaymentHistoryViewModel}">
+                <view:PaymentHistoryView/>
+            </DataTemplate>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/Common.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+    <Grid>
+
+        <Grid.Resources>
+            <Style TargetType="materialDesign:PackIcon">
+                <Setter Property="Foreground" Value="LightGray"></Setter>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="256"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Background="DarkSlateGray">
+            <Grid.Resources>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}"></Style>
+            </Grid.Resources>
+            <StackPanel>
+                <ListView FontSize="15" SelectionChanged="Selector_OnSelectionChanged">
+                    <ListViewItem Padding="1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Car" Margin="15"/>
+                            <TextBlock Text="Maşınlar" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Padding="1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Contract" Margin="15"/>
+                            <TextBlock Text="Müqavilələr" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Padding="1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FileChart" Margin="15"/>
+                            <TextBlock Text="Hesabat" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Padding="1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="MessageOutline" Margin="15"/>
+                            <TextBlock Text="Bildirişlər" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Padding="1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="History" Margin="15"/>
+                            <TextBlock Text="Ödəniş tarixçəsi" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Padding="1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Archive" Margin="15"/>
+                            <TextBlock Text="Arxivləşdir" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                </ListView>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                <TextBlock Foreground="LightGray" > Created by Rafet Rzayev</TextBlock>
+            </StackPanel>
+        </Grid>
+        <ContentControl Grid.Column="1" Content="{Binding}" Background="White"/>
+
+    </Grid>
+</Window>
