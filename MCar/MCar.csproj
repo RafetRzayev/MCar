@@ -94,6 +94,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CarViewModel.cs" />
     <Compile Include="ViewModel\ContractViewModel.cs" />
+    <Compile Include="ViewModel\MediatorViewModel.cs" />
     <Compile Include="ViewModel\NotificationViewModel.cs" />
     <Compile Include="ViewModel\PaymentHistoryViewModel.cs" />
     <Compile Include="ViewModel\ReportViewModel.cs" />
@@ -102,6 +103,9 @@
     </Compile>
     <Compile Include="View\ContractView.xaml.cs">
       <DependentUpon>ContractView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MediatorView.xaml.cs">
+      <DependentUpon>MediatorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\NotificationView.xaml.cs">
       <DependentUpon>NotificationView.xaml</DependentUpon>
@@ -133,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ContractView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MediatorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

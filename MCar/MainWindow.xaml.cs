@@ -46,12 +46,15 @@ namespace MCar
                     DataContext = new ContractViewModel();
                     break;
                 case 2:
-                    DataContext = new ReportViewModel();
+                    DataContext = new MediatorViewModel();
                     break;
                 case 3:
-                    DataContext = new NotificationViewModel();
+                    DataContext = new ReportViewModel();
                     break;
                 case 4:
+                    DataContext = new NotificationViewModel();
+                    break;
+                case 5:
                     DataContext = new PaymentHistoryViewModel();
                     break;
             }

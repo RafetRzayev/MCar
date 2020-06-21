@@ -30,6 +30,9 @@
             <DataTemplate DataType="{x:Type ViewModels:PaymentHistoryViewModel}">
                 <view:PaymentHistoryView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:MediatorViewModel}">
+                <view:MediatorView/>
+            </DataTemplate>
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Style/Common.xaml"></ResourceDictionary>
@@ -67,6 +70,12 @@
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Contract" Margin="15"/>
                             <TextBlock Text="Müqavilələr" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Padding="1">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="PersonBoxMultiple" Margin="15"/>
+                            <TextBlock Text="Vasitəçilər" VerticalAlignment="Center"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Padding="1">

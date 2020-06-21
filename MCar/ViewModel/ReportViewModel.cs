@@ -44,23 +44,20 @@ namespace MCar.ViewModel
             {
                 Set(() => SelectedContractType, ref _selectedContractType, value);
 
-                if (SelectedContractType != null)
+                if (SelectedContractType == ContractType.All)
                 {
-                    if (SelectedContractType == ContractType.All)
-                    {
-                        FillAllReportList();
-                        FillAllValues();
-                    }
-                    else if (SelectedContractType == ContractType.Actual)
-                    {
-                        FillActiveReportList();
-                        FillAllValues();
-                    }
-                    else
-                    {
-                        FillClosedReportList();
-                        FillAllValues();
-                    }
+                    FillAllReportList();
+                    FillAllValues();
+                }
+                else if (SelectedContractType == ContractType.Actual)
+                {
+                    FillActiveReportList();
+                    FillAllValues();
+                }
+                else
+                {
+                    FillClosedReportList();
+                    FillAllValues();
                 }
             }
         }
