@@ -56,11 +56,11 @@
                                 <TextBox
                                     Width="200"
                                     HorizontalAlignment="Left"
-                                    materialDesign:HintAssist.Hint="Adı"
+                                    materialDesign:HintAssist.Hint="Maşının nömrəsi"
                                     materialDesign:TextFieldAssist.HasClearButton="True"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                     VerticalAlignment="Center"
-                                    Text="{Binding Name}"/>
+                                    Text="{Binding CarNumber}"/>
 
                                 <TextBox
                                     Width="200"
@@ -175,8 +175,8 @@
                         EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
 
                     <materialDesign:DataGridTextColumn
-                        Binding="{Binding Name}"
-                        Header="Ad"
+                        Binding="{Binding CarNumber}"
+                        Header="Maşın nömrəsi"
                         EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
 
                     <materialDesign:DataGridTextColumn

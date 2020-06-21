@@ -45,11 +45,11 @@ namespace MCar.ViewModel
             set => Set(() => Model, ref _model, value);
         }
 
-        private string _name;
-        public string Name
+        private string _carNumber;
+        public string CarNumber
         {
-            get => _name;
-            set => Set(() => Name, ref _name, value);
+            get => _carNumber;
+            set => Set(() => CarNumber, ref _carNumber, value);
         }
 
         private string _firstName;
@@ -145,7 +145,7 @@ namespace MCar.ViewModel
             Car car = new Car
             {
                 Model = Model,
-                Name = Name,
+                CarNumber = CarNumber,
                 Owner = new Person
                 {
                     FirstName = FirstName,

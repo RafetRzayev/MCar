@@ -11,7 +11,7 @@ namespace MCar.Model
     public class Car
     {
         public string Model { get; set; }
-        public string Name { get; set; }
+        public string CarNumber { get; set; }
         public Person Owner { get; set; }
         public double BuyPrice { get; set; }
         public double SellPrice { get; set; }
@@ -19,7 +19,7 @@ namespace MCar.Model
         public Status Status { get; set; }
         public override string ToString()
         {
-            return $"{Model} {Name}({MadeYear})";
+            return $"{Model} {CarNumber}({MadeYear})";
         }
     }
 
