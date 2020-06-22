@@ -22,7 +22,7 @@ namespace MCar.Model
 
         public override string ToString()
         {
-            return FullName;
+            return $"{FullName} {FatherName}";
         }
     }
 }

@@ -16,7 +16,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid>
+    <ScrollViewer>
         <ItemsControl
             ItemsSource="{Binding NotificationList}"
             Grid.IsSharedSizeScope="True">
@@ -56,5 +56,5 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-    </Grid>
+    </ScrollViewer>
 </UserControl>

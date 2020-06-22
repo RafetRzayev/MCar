@@ -68,6 +68,12 @@
                         EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
                     </materialDesign:DataGridTextColumn>
 
+                    <materialDesign:DataGridTextColumn
+                        Binding="{Binding Mediator.Seriya}"
+                        Header="Seriya"
+                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                    </materialDesign:DataGridTextColumn>
+
                 </DataGrid.Columns>
 
             </DataGrid>
@@ -86,7 +92,7 @@
            <TextBox
                Text="{Binding SearchMediator}"
                materialDesign:TextFieldAssist.HasClearButton="True"
-               materialDesign:HintAssist.Hint="Vasitəçini yazın"
+               materialDesign:HintAssist.Hint="Vasitəçi haqqında yazın"
                VerticalAlignment="Center"
                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                Width="160"/>
