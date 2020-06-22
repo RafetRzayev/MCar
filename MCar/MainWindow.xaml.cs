@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MCar.Context;
 using MCar.ViewModel;
 
 namespace MCar
@@ -27,11 +28,12 @@ namespace MCar
         {
             InitializeComponent();
 
-            CultureInfo culture = (CultureInfo) CultureInfo.CurrentCulture.Clone();
-            culture.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
-            culture.DateTimeFormat.LongTimePattern = "";
-            Thread.CurrentThread.CurrentCulture = culture;
+            SetTimeFormat();
+
+            Data = new DataContext();
         }
+
+        public static  DataContext  Data { get; set; }
 
         private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -58,6 +60,14 @@ namespace MCar
                     DataContext = new PaymentHistoryViewModel();
                     break;
             }
+        }
+
+        private void SetTimeFormat()
+        {
+            CultureInfo culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+            culture.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
+            culture.DateTimeFormat.LongTimePattern = "";
+            Thread.CurrentThread.CurrentCulture = culture;
         }
     }
 }

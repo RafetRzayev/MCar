@@ -130,27 +130,13 @@ namespace MCar.ViewModel
             set => Set(() => AllSelectedIncome, ref _allSelectedIncome, value);
         }
 
-        private int _count;
-        public int Count
-        {
-            get => _count;
-            set => Set(() => Count, ref _count, value);
-        }
-
-        private int _selectedTimeCount;
-        public int SelectedTimeCount
-        {
-            get => _selectedTimeCount;
-            set => Set(() => SelectedTimeCount, ref _selectedTimeCount, value);
-        }
-
         #endregion
 
         #region Methods
 
         private void Init()
         {
-            ContractList = new ObservableCollection<Contract>(XmlHelper.GetContractList());
+            ContractList = new ObservableCollection<Contract>(MainWindow.Data.Contracts);
             ReportList = new ObservableCollection<Report>();
             SelectedTimeReportList = new ObservableCollection<Report>();
             SelectedContractType = ContractType.Actual;
@@ -211,7 +197,6 @@ namespace MCar.ViewModel
             AllRest = 0;
             AllIncome = 0;
             AllMustBePaid = 0;
-            Count = ReportList.Count;
 
             foreach (var c in ReportList)
             {
@@ -220,6 +205,12 @@ namespace MCar.ViewModel
                 AllIncome += c.Income;
                 AllMustBePaid += c.Car.SellPrice;
             }
+
+            AllPaid = Math.Round(AllPaid, 2);
+            AllRest = Math.Round(AllRest, 2);
+            AllIncome = Math.Round(AllIncome, 2);
+            AllMustBePaid = Math.Round(AllMustBePaid, 2);
+
         }
 
         private void FillSelectedTimeAllValues()
@@ -228,7 +219,6 @@ namespace MCar.ViewModel
             AllSelectedRest = 0;
             AllSelectedIncome = 0;
             AllSelectedMustBePaid = 0;
-            SelectedTimeCount = SelectedTimeReportList.Count;
 
             foreach (var c in SelectedTimeReportList)
             {
@@ -237,6 +227,12 @@ namespace MCar.ViewModel
                 AllSelectedIncome += c.Income;
                 AllSelectedMustBePaid += c.SumOfMustBePaid;
             }
+
+            AllSelectedPaid = Math.Round(AllSelectedPaid, 2);
+            AllSelectedRest = Math.Round(AllSelectedRest, 2);
+            AllSelectedIncome = Math.Round(AllSelectedIncome, 2);
+            AllSelectedMustBePaid = Math.Round(AllSelectedMustBePaid, 2);
+
         }
 
         private Report ConvertToReport(Contract contract)
@@ -262,7 +258,7 @@ namespace MCar.ViewModel
                 Car = contract.Car,
                 Income = contract.Income,
                 InitialPayment = contract.InitialPayment,
-                Payments = contract.Payments.FindAll(c=>ConvertStringToDateTime(c.Date)<=SelectedTime)
+                Payments = contract.Payments.FindAll( c => ConvertStringToDateTime(c.Date) <= SelectedTime)
             };
         }
 

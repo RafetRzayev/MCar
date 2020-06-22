@@ -71,6 +71,7 @@ namespace MCar.ViewModel
             set
             {
                 Set(() => SelectedContractPayment, ref _selectedContractPayment, value);
+              
                 if (SelectedContractPayment != null)
                 {
                     RestPaid = SelectedContractPayment.Rest;
@@ -227,9 +228,9 @@ namespace MCar.ViewModel
 
         private void Init()
         {
-            FullCarList = new ObservableCollection<Car>(XmlHelper.GetCarList());
+            FullCarList = new ObservableCollection<Car>(MainWindow.Data.Cars);
             FillActiveCarList();
-            ContractList = new ObservableCollection<Contract>(XmlHelper.GetContractList());
+            ContractList = new ObservableCollection<Contract>(MainWindow.Data.Contracts);
         }
 
         private void FillActiveCarList()
@@ -293,10 +294,11 @@ namespace MCar.ViewModel
                     Payments = PaymentList
                 };
 
-
                 XmlHelper.AddContract(contract);
 
                 ContractList.Add(contract);
+
+                MainWindow.Data.Contracts.Add(contract);
 
                 XmlHelper.SetCarList(FullCarList);
 
@@ -353,6 +355,8 @@ namespace MCar.ViewModel
                     XmlHelper.RemoveContract(SelectedContract);
 
                     ContractList.Remove(SelectedContract);
+
+                    MainWindow.Data.Contracts.Remove(SelectedContract);
 
                     MyMessageQueue.Enqueue("Silindi!");
                 }

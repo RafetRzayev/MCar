@@ -27,7 +27,7 @@
             <ScrollViewer>
                 <StackPanel>
                     <DataGrid 
-                        MaxHeight="400"
+                        MaxHeight="450"
                         Margin="0 8 0 0"
                         ItemsSource="{Binding AllPaymentHistoryList}"
                         CanUserSortColumns="True"

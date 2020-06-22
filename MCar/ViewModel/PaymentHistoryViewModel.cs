@@ -65,7 +65,7 @@ namespace MCar.ViewModel
 
         public void Init()
         {
-            ContractList = new ObservableCollection<Contract>(XmlHelper.GetContractList());
+            ContractList = new ObservableCollection<Contract>(MainWindow.Data.Contracts);
             FillPaymentHistoryList();
             FillAllPaymentHistoryList();
             FromTime = DateTime.Now;

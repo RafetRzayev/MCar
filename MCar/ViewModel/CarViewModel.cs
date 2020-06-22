@@ -131,7 +131,7 @@ namespace MCar.ViewModel
 
         private void Init()
         {
-            CarList = new ObservableCollection<Car>(XmlHelper.GetCarList());
+            CarList = new ObservableCollection<Car>(MainWindow.Data.Cars);
         }
 
         private void AddCar()
@@ -161,6 +161,8 @@ namespace MCar.ViewModel
 
             CarList.Add(car);
            
+            MainWindow.Data.Cars.Add(car);
+
             XmlHelper.SetCarList(CarList);
 
             MyMessageQueue.Enqueue("Əlavə edildi.");

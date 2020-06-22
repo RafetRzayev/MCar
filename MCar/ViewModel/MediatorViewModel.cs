@@ -50,12 +50,11 @@ namespace MCar.ViewModel
 
         public void Init()
         {
-            ContractList = new ObservableCollection<Contract>(XmlHelper.GetContractList());
+            ContractList = new ObservableCollection<Contract>(MainWindow.Data.Contracts);
             allContracts = ContractList.ToList();
-            allContracts.ForEach(c=>SumMediatorMoney+=c.Mediator.Money);
+            allContracts.ForEach(c => SumMediatorMoney += c.Mediator.Money);
         }
 
-        
         private void FillContractListDependentMediator()
         {
             ContractList.Clear();

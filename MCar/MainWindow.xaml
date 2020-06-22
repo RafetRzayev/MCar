@@ -9,7 +9,7 @@
         xmlns:ViewModels="clr-namespace:MCar.ViewModel" 
         xmlns:view="clr-namespace:MCar.View"
         FontSize="15" Height="700" Width="1152" 
-        MinHeight="602"
+        MinHeight="650"
         MinWidth="1052"
         WindowStyle="SingleBorderWindow"  WindowState="Maximized" Title="MCar sistem">
 

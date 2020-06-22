@@ -34,7 +34,7 @@ namespace MCar.ViewModel
 
         private void Init()
         {
-            ContractList = new ObservableCollection<Contract>(XmlHelper.GetContractList());
+            ContractList = new ObservableCollection<Contract>(MainWindow.Data.Contracts);
             FillNotification();
         }
 

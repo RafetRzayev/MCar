@@ -20,7 +20,7 @@ namespace MCar.Model
 
         public double SumOfRest
         {
-            get => Math.Round(Payments.Sum(payment => payment.Rest),2);
+            get => Math.Round(Payments.Sum(payment => payment.Rest), 2);
         }
     }
 }
