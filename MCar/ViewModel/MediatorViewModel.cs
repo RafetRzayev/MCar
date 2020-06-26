@@ -79,7 +79,7 @@ namespace MCar.ViewModel
                 if (!string.IsNullOrEmpty(c.Mediator.Seriya))
                     s += c.Mediator.Seriya;
 
-                if (s.Trim().IndexOf(SearchMediator.Replace(" ","").Trim(), StringComparison.OrdinalIgnoreCase) != -1)
+                if (s.Trim().IndexOf(SearchMediator.Replace(" ",""), StringComparison.OrdinalIgnoreCase) != -1)
                 {
                     ContractList.Add(c);
                     SumMediatorMoney += c.Mediator.Money;

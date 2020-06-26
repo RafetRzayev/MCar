@@ -19,6 +19,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -218,9 +219,84 @@
             </StackPanel>
         </materialDesign:Card>
 
+        <StackPanel Grid.Row="1" Orientation="Horizontal"
+                    HorizontalAlignment="Right" Margin="0 0 4 0">
+
+            <Label Content="Süzgəc" FontWeight="DemiBold"/>
+            <materialDesign:PopupBox StaysOpen="True">
+                <materialDesign:PopupBox.ToggleContent>
+                    <materialDesign:PackIcon Kind="Filter" Foreground="Black" />
+                </materialDesign:PopupBox.ToggleContent>
+                <StackPanel Margin="4"
+                    Orientation="Vertical">
+
+                    <TextBox
+                        Width="200"
+                        HorizontalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Alıcı"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding SearchCustomer}"/>
+
+                    <TextBox
+                        Width="200"
+                        HorizontalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Vasitəçi"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding SearchMediator}"/>
+
+                    <TextBox
+                        Width="200"
+                        HorizontalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Maşın modeli"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding SearchCarModel}"/>
+
+                    <TextBox
+                        Width="200"
+                        HorizontalAlignment="Center"
+                        materialDesign:HintAssist.Hint="Maşın nömrəsi"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding SearchCarNumber}"/>
+
+                    <!--
+                    <GroupBox Header="Müqavilə tarixi">
+
+                        <StackPanel Orientation="Horizontal">
+                            <DatePicker
+                                SelectedDate="{Binding TimeFrom}"
+                                Width="100"
+                                HorizontalAlignment="Center"
+                                materialDesign:HintAssist.Hint="Bu tarixdən"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                            <DatePicker
+                                SelectedDate="{Binding TimeTo}"
+                                Width="100"
+                                HorizontalAlignment="Center"
+                                materialDesign:HintAssist.Hint="Bu tarixədək"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                        </StackPanel>
+                       
+                    </GroupBox>
+                    -->
+
+                    <Button
+                        Margin="0 8 0 0"
+                        Content="Axtar"
+                        HorizontalContentAlignment="Center"
+                        Command="{Binding SearchCommand}" />
+
+                    <Button
+                        Content="Hamısın göstər"
+                        HorizontalContentAlignment="Center"
+                        Command="{Binding ShowAllCommand}" />
+                      
+                </StackPanel>
+            </materialDesign:PopupBox>
+        </StackPanel>
 
         <DataGrid
-            Grid.Row="1"
+            Grid.Row="2"
             Margin="0 8 0 0"
             ItemsSource="{Binding ContractList}"
             SelectedItem="{Binding SelectedContract}"
@@ -284,15 +360,9 @@
             </DataGrid.Columns>
         </DataGrid>
 
-
-        <!--<Button Grid.Row="2" Content="Ödəniş et" 
-                Width="120"
-                HorizontalAlignment="Right"
-                Command="{Binding PayCommand}"/>-->
-
         <materialDesign:Flipper
             Height="auto"
-            Grid.Row="2"
+            Grid.Row="3"
             Style="{StaticResource MaterialDesignCardFlipper}"
             HorizontalAlignment="Right">
             <materialDesign:Flipper.FrontContent>
@@ -383,7 +453,7 @@
             </materialDesign:Flipper.BackContent>
         </materialDesign:Flipper>
 
-        <Button Grid.Row="2" Content="Sil" 
+        <Button Grid.Row="3" Content="Sil" 
                 Width="120"
                 HorizontalAlignment="Left"
                 Command="{Binding RemoveCommand}"/>

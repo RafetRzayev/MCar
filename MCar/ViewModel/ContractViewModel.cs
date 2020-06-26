@@ -222,6 +222,41 @@ namespace MCar.ViewModel
         public SnackbarMessageQueue MyMessageQueue { get; set; } =
             new SnackbarMessageQueue(TimeSpan.FromMilliseconds(250));
 
+
+        #region Search properties
+
+        private string _searchCustomer;
+        public string SearchCustomer
+        {
+            get => _searchCustomer;
+            set => Set(() => SearchCustomer, ref _searchCustomer, value);
+        }
+
+        private string _searchMediator;
+        public string SearchMediator
+        {
+            get => _searchMediator;
+            set => Set(() => SearchMediator, ref _searchMediator, value);
+        }
+
+        private string _searchCarModel;
+        public string SearchCarModel
+        {
+            get => _searchCarModel;
+            set => Set(() => SearchCarModel, ref _searchCarModel, value);
+        }
+
+        private string _searchCarNumber;
+        public string SearchCarNumber
+        {
+            get => _searchCarNumber;
+            set => Set(() => SearchCarNumber, ref _searchCarNumber, value);
+        }
+
+        #endregion
+
+
+
         #endregion
 
         #region Methods
@@ -398,6 +433,65 @@ namespace MCar.ViewModel
             }
 
         }
+       
+        private void Search()
+        {
+            ContractList.Clear();
+
+            foreach (var c in MainWindow.Data.Contracts)
+            {
+
+                if (!string.IsNullOrEmpty(SearchCustomer))
+                {
+                    if (c.Customer.ToString().Replace(" ","")
+                            .IndexOf(SearchCustomer.Replace(" ", ""), StringComparison.OrdinalIgnoreCase) == -1)
+                        continue;
+                }
+
+                if (!string.IsNullOrEmpty(SearchMediator))
+                {
+                    if (c.Mediator.ToString().Trim()
+                            .IndexOf(SearchMediator.Replace(" ", ""), StringComparison.OrdinalIgnoreCase) == -1)
+                        continue;
+                }
+
+                if (!string.IsNullOrEmpty(SearchCarModel))
+                {
+                    if(string.IsNullOrEmpty(c.Car.Model))
+                        continue;
+                    
+                    if (c.Car.Model.Replace(" ","")
+                            .IndexOf(SearchCarModel.Replace(" ", ""), StringComparison.OrdinalIgnoreCase) == -1)
+                        continue;
+                }
+
+                if (!string.IsNullOrEmpty(SearchCarNumber))
+                {
+                    if(string.IsNullOrEmpty(c.Car.CarNumber))
+                        continue;
+
+                    if (c.Car.CarNumber.Replace(" ", "")
+                            .IndexOf(SearchCarNumber.Replace(" ", ""), StringComparison.OrdinalIgnoreCase) == -1)
+                        continue;
+                }
+
+                ContractList.Add(c);
+
+            }
+        }
+
+
+        private void FillAllContract()
+        {
+            ContractList.Clear();
+
+            MainWindow.Data.Contracts.ForEach(c => ContractList.Add(c));
+
+            SearchCustomer = string.Empty;
+            SearchMediator = string.Empty;
+            SearchCarModel = string.Empty;
+            SearchCarNumber = string.Empty;
+        }
 
         private RelayCommand _addCommand;
         public RelayCommand AddCommand
@@ -434,10 +528,29 @@ namespace MCar.ViewModel
             {
                 return _payCommand
                        ?? (_payCommand = new RelayCommand(
-                           () =>
-                           {
-                               PayContract();
-                           }, () => true));
+                           PayContract, () => true));
+            }
+        }
+
+        private RelayCommand _searchCommand;
+        public RelayCommand SearchCommand
+        {
+            get
+            {
+                return _searchCommand
+                       ?? (_searchCommand = new RelayCommand(
+                           () => Search(), () => true));
+            }
+        }
+
+        private RelayCommand _showAllCommand;
+        public RelayCommand ShowAllCommand
+        {
+            get
+            {
+                return _showAllCommand
+                       ?? (_showAllCommand = new RelayCommand(
+                           FillAllContract, () => true));
             }
         }
 

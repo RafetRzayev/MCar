@@ -19,7 +19,7 @@ namespace MCar.Model
         public Status Status { get; set; }
         public override string ToString()
         {
-            return $"{Model} {CarNumber}({MadeYear})";
+            return $"{Model} {CarNumber}";
         }
     }
 
