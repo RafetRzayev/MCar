@@ -179,6 +179,8 @@ namespace MCar.ViewModel
                 if (mbResult == MessageBoxResult.Cancel)
                     return;
 
+                MainWindow.Data.Cars.Remove(SelectedCar);
+
                 CarList.Remove(SelectedCar);
 
                 XmlHelper.SetCarList(CarList);

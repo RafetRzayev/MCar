@@ -30,6 +30,7 @@
             <DataGrid
                 Margin="0 8 0 0"
                 ItemsSource="{Binding ContractList}"
+                IsReadOnly="True"
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 AutoGenerateColumns="False"

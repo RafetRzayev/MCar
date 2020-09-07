@@ -389,9 +389,9 @@ namespace MCar.ViewModel
                 {
                     XmlHelper.RemoveContract(SelectedContract);
 
-                    ContractList.Remove(SelectedContract);
-
                     MainWindow.Data.Contracts.Remove(SelectedContract);
+
+                    ContractList.Remove(SelectedContract);
 
                     MyMessageQueue.Enqueue("Silindi!");
                 }
