@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:MCar.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AboutContractView" Height="450" Width="800">
+        Title="Müqavilə haqqında"
+        WindowStartupLocation="CenterScreen"
+        Height="650" Width="670" ResizeMode="NoResize">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -16,7 +18,180 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <Grid>
-       
-    </Grid>
+    <StackPanel>
+             
+        <ListView ItemsSource="{Binding Contract}" Height="auto">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="5">
+                            <TextBox
+                                Width="200"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Alıcı"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=Customer,Mode=OneWay}"/>
+                            <TextBox
+                                Width="200"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Vasitəçi"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=Mediator,Mode=OneWay}"/>
+                            <TextBox
+                                Width="200"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Müqavilə tarixi"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=CreatingDate,Mode=OneWay}"/>
+                            <TextBox
+                                Width="200"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Müqavilə müddəti(ay)"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=Term,Mode=OneWay}"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="5">
+                            <TextBox
+                                Width="200"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Maşın"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=Car,Mode=OneWay}"/>
+                            <TextBox
+                                Width="200"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Alış qiyməti"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=Car.BuyPrice,Mode=OneWay}"/>
+                            <TextBox
+                                Width="200"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Satış qiyməti"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=Car.SellPrice,Mode=OneWay}"/>
+                            <TextBox
+                                Width="200"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="ilkin ödəniş"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=InitialPayment,Mode=OneWay}"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="5">
+                            <TextBox
+                                Width="200"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Aylıq ödəniş"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=PaymentPerMonth,Mode=OneWay}"/>
+                            <TextBox
+                                Width="200"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Vasitəçi pulu"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=Mediator.Money,Mode=OneWay}"/>
+                            <TextBox
+                                Width="200"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Gəlir"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=Income,Mode=OneWay}"/>
+                            <TextBox
+                                Width="200"
+                                HorizontalAlignment="Left"
+                                materialDesign:HintAssist.Hint="Status"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                VerticalAlignment="Center"
+                                Text="{Binding Path=Status,Mode=OneWay}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListView>
+
+        <Expander  HorizontalAlignment="Stretch"  Header="Ödəniş tarixçəsi" Margin="2">
+                <StackPanel>
+                    <DataGrid 
+                        Height="300"
+                        VerticalScrollBarVisibility="Auto"
+                        Margin="0 8 0 0"
+                        ItemsSource="{Binding PaymentHistoryList}"
+                        IsReadOnly="True"
+                        CanUserSortColumns="True"
+                        CanUserAddRows="False"
+                        AutoGenerateColumns="False"
+                        materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                        materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+
+                        <DataGrid.Columns>
+
+                            <materialDesign:DataGridTextColumn
+                                Binding="{Binding PaymentTime}"
+                                Header="Tarix"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+
+                            <materialDesign:DataGridTextColumn
+                                Binding="{Binding Paid}"
+                                Header="Ödənilib"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+        </Expander>
+
+        <Expander HorizontalAlignment="Stretch" Header="Ödəniş cədvəli" Margin="2">
+                <StackPanel>
+                    <DataGrid 
+                        Height="300"
+                        VerticalScrollBarVisibility="Auto"
+                        Margin="0 8 0 0"
+                        ItemsSource="{Binding PaymentList}"
+                        IsReadOnly="True"
+                        CanUserSortColumns="True"
+                        CanUserAddRows="False"
+                        AutoGenerateColumns="False"
+                        materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                        materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+
+                        <DataGrid.Columns>
+
+                            <materialDesign:DataGridTextColumn
+                                Binding="{Binding Date}"
+                                Header="Tarix"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+
+                            <materialDesign:DataGridTextColumn
+                                Binding="{Binding MustBePaid}"
+                                Header="Ödənilməlidir"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+
+                            <materialDesign:DataGridTextColumn
+                                Binding="{Binding Paid}"
+                                Header="Ödənilib"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+
+                            <materialDesign:DataGridTextColumn
+                                Binding="{Binding Rest}"
+                                Header="Qalıq"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+
+                    </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+        </Expander>
+    </StackPanel>
 </Window>

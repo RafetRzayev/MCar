@@ -7,14 +7,22 @@ using System.Threading.Tasks;
 using System.Windows;
 using GalaSoft.MvvmLight.Command;
 using MaterialDesignThemes.Wpf;
+using MCar.Context;
 using MCar.Model;
 using MCar.Utils;
+using MCar.View;
 
 namespace MCar.ViewModel
 {
     class ContractViewModel : BaseViewModel
     {
 
+        #region Fields
+
+        private AboutContractView _aboutContractView;
+        private AboutContractViewModel _aboutContractViewModel;
+
+        #endregion
         #region ctor
 
         public ContractViewModel()
@@ -58,6 +66,7 @@ namespace MCar.ViewModel
             {
                 Set(() => SelectedContract, ref _selectedContract, value);
                 FillSelectedContractPaymentList();
+                ShowAboutContractView();
             }
         }
 
@@ -480,6 +489,18 @@ namespace MCar.ViewModel
             }
         }
 
+        private void ShowAboutContractView()
+        {
+            _aboutContractViewModel = new AboutContractViewModel(SelectedContract);
+
+            _aboutContractView?.Close();
+
+            _aboutContractView = new AboutContractView
+            {
+                DataContext = _aboutContractViewModel
+            };
+            _aboutContractView.Show();
+        }
 
         private void FillAllContract()
         {

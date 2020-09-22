@@ -84,6 +84,7 @@
     <Compile Include="Model\Report.cs" />
     <Compile Include="Utils\EnumDescriptionConverter.cs" />
     <Compile Include="Utils\XmlHelper.cs" />
+    <Compile Include="ViewModel\AboutContractViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CarViewModel.cs" />
     <Compile Include="ViewModel\ContractViewModel.cs" />
