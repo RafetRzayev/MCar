@@ -14,8 +14,7 @@ namespace MCar.ViewModel
 
         public AboutContractViewModel(Contract contract)
         {
-            Contract.Add(contract);
-            Init();
+            Init(contract);
         }
 
         #endregion
@@ -28,17 +27,36 @@ namespace MCar.ViewModel
         public ObservableCollection<Payment> PaymentList { get; set; } =
             new ObservableCollection<Payment>();
 
-        public ObservableCollection<Contract> Contract { get; set; } = new ObservableCollection<Contract>();
-       
+        private AboutContractModel _aboutContract;
+        public AboutContractModel AboutContract
+        {
+            get => _aboutContract;
+            set => Set(() => AboutContract, ref _aboutContract, value);
+        }
 
         #endregion
 
         #region Methods
 
-        private void Init()
+        private void Init(Contract contract)
         {
-            PaymentHistoryList = new ObservableCollection<PaymentHistory>(Contract.FirstOrDefault().PaymentHistories);
-            PaymentList=new ObservableCollection<Payment>(Contract.FirstOrDefault().Payments);
+            AboutContract = new AboutContractModel
+            {
+                CustomerFullName = contract.Customer.ToString(),
+                MediatorFullName = contract.Mediator.ToString(),
+                CreatingDate = contract.CreatingDate,
+                Term = contract.Term,
+                CarName = contract.Car.ToString(),
+                CarBuyPrice = contract.Car.BuyPrice,
+                CarSellPrice = contract.Car.SellPrice,
+                InitialPayment = contract.InitialPayment,
+                PaymentPerMonth = contract.PaymentPerMonth,
+                MediatorMoney = contract.Mediator.Money,
+                Income = contract.Income,
+                Status = contract.Status
+            };
+            PaymentHistoryList = new ObservableCollection<PaymentHistory>(contract.PaymentHistories);
+            PaymentList = new ObservableCollection<Payment>(contract.Payments);
         }
 
 

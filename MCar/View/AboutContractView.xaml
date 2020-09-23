@@ -19,11 +19,8 @@
     </Window.Resources>
 
     <StackPanel>
-             
-        <ListView ItemsSource="{Binding Contract}" Height="auto">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
+
+        <StackPanel Orientation="Horizontal">
                         <StackPanel Margin="5">
                             <TextBox
                                 Width="200"
@@ -31,28 +28,28 @@
                                 materialDesign:HintAssist.Hint="Alıcı"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                 VerticalAlignment="Center"
-                                Text="{Binding Path=Customer,Mode=OneWay}"/>
+                                Text="{Binding Path=AboutContract.CustomerFullName}"/>
                             <TextBox
                                 Width="200"
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Vasitəçi"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                 VerticalAlignment="Center"
-                                Text="{Binding Path=Mediator,Mode=OneWay}"/>
+                                Text="{Binding AboutContract.MediatorFullName}"/>
                             <TextBox
                                 Width="200"
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Müqavilə tarixi"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                 VerticalAlignment="Center"
-                                Text="{Binding Path=CreatingDate,Mode=OneWay}"/>
+                                Text="{Binding AboutContract.CreatingDate}"/>
                             <TextBox
                                 Width="200"
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Müqavilə müddəti(ay)"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                 VerticalAlignment="Center"
-                                Text="{Binding Path=Term,Mode=OneWay}"/>
+                                Text="{Binding Path=AboutContract.Term}"/>
                         </StackPanel>
 
                         <StackPanel Margin="5">
@@ -62,28 +59,28 @@
                                 materialDesign:HintAssist.Hint="Maşın"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                 VerticalAlignment="Center"
-                                Text="{Binding Path=Car,Mode=OneWay}"/>
+                                Text="{Binding Path=AboutContract.CarName}"/>
                             <TextBox
                                 Width="200"
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Alış qiyməti"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                 VerticalAlignment="Center"
-                                Text="{Binding Path=Car.BuyPrice,Mode=OneWay}"/>
+                                Text="{Binding Path=AboutContract.CarBuyPrice}"/>
                             <TextBox
                                 Width="200"
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Satış qiyməti"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                 VerticalAlignment="Center"
-                                Text="{Binding Path=Car.SellPrice,Mode=OneWay}"/>
+                                Text="{Binding Path=AboutContract.CarSellPrice}"/>
                             <TextBox
                                 Width="200"
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="ilkin ödəniş"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                 VerticalAlignment="Center"
-                                Text="{Binding Path=InitialPayment,Mode=OneWay}"/>
+                                Text="{Binding Path=AboutContract.InitialPayment}"/>
                         </StackPanel>
 
                         <StackPanel Margin="5">
@@ -93,34 +90,31 @@
                                 materialDesign:HintAssist.Hint="Aylıq ödəniş"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                 VerticalAlignment="Center"
-                                Text="{Binding Path=PaymentPerMonth,Mode=OneWay}"/>
+                                Text="{Binding Path=AboutContract.PaymentPerMonth}"/>
                             <TextBox
                                 Width="200"
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Vasitəçi pulu"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                 VerticalAlignment="Center"
-                                Text="{Binding Path=Mediator.Money,Mode=OneWay}"/>
+                                Text="{Binding Path=AboutContract.MediatorMoney}"/>
                             <TextBox
                                 Width="200"
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Gəlir"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                 VerticalAlignment="Center"
-                                Text="{Binding Path=Income,Mode=OneWay}"/>
+                                Text="{Binding Path=AboutContract.Income}"/>
                             <TextBox
                                 Width="200"
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Status"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                 VerticalAlignment="Center"
-                                Text="{Binding Path=Status,Mode=OneWay}"/>
+                                Text="{Binding Path=AboutContract.Status}"/>
                         </StackPanel>
                     </StackPanel>
-                    
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListView>
+      
 
         <Expander  HorizontalAlignment="Stretch"  Header="Ödəniş tarixçəsi" Margin="2">
                 <StackPanel>
