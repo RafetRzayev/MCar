@@ -66,7 +66,6 @@ namespace MCar.ViewModel
             {
                 Set(() => SelectedContract, ref _selectedContract, value);
                 FillSelectedContractPaymentList();
-                ShowAboutContractView();
             }
         }
 
@@ -182,6 +181,16 @@ namespace MCar.ViewModel
             {
                 Set(() => Term, ref _term, value);
                 PaymentPerMonth = Math.Round((SelectedCar.SellPrice - InitialPayment) / Term, 2);
+            }
+        }
+
+        private int _contractNumber;
+        public int ContractNumber
+        {
+            get => _contractNumber;
+            set
+            {
+                Set(() => ContractNumber, ref _contractNumber, value);
             }
         }
 
@@ -311,7 +320,7 @@ namespace MCar.ViewModel
                 Contract contract = new Contract
                 {
                     Id = $"{Seriya}{d.Second}{d.Minute}{d.Hour}{d.Day}{d.Month}{d.Year}",
-                    ContractNumber = ContractList.Count+1,
+                    ContractNumber = ContractNumber,
                     Customer = new Person
                     {
                         FirstName = FirstName,
@@ -491,6 +500,11 @@ namespace MCar.ViewModel
 
         private void ShowAboutContractView()
         {
+            if (SelectedContract == null)
+            {
+                return;
+            }
+
             _aboutContractViewModel = new AboutContractViewModel(SelectedContract);
 
             _aboutContractView?.Close();
@@ -572,6 +586,17 @@ namespace MCar.ViewModel
                 return _showAllCommand
                        ?? (_showAllCommand = new RelayCommand(
                            FillAllContract, () => true));
+            }
+        }
+
+        private RelayCommand _showAboutContractCommand;
+        public RelayCommand ShowAboutContractCommand
+        {
+            get
+            {
+                return _showAboutContractCommand
+                       ?? (_showAboutContractCommand = new RelayCommand(
+                           ShowAboutContractView, () => true));
             }
         }
 
