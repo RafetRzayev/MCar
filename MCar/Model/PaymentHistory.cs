@@ -12,4 +12,10 @@ namespace MCar.Model
         public DateTime PaymentTime { get; set; }
         public double Paid { get; set; }
     }
+
+    public class PaymentHistoryModel
+    {
+        public string Header { get; set; }
+        public List<PaymentHistory> PaymentHistories { get; set; }
+    }
 }

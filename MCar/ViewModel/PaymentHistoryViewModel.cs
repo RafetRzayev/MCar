@@ -23,8 +23,8 @@ namespace MCar.ViewModel
 
         #region Properties
 
-        public ObservableCollection<List<PaymentHistory>> PaymentHistoryList { get; set; } =
-           new ObservableCollection<List<PaymentHistory>>();
+        public ObservableCollection<PaymentHistoryModel> PaymentHistoryList { get; set; } 
+            = new ObservableCollection<PaymentHistoryModel>();
 
         public ObservableCollection<PaymentHistory> AllPaymentHistoryList { get; set; } =
             new ObservableCollection<PaymentHistory>();
@@ -81,7 +81,11 @@ namespace MCar.ViewModel
                 if (contract.PaymentHistories.Count == 0)
                     continue;
 
-                PaymentHistoryList.Add(contract.PaymentHistories);
+                PaymentHistoryList.Add(new PaymentHistoryModel 
+                { 
+                    Header = $"{contract.ContractNumber} -- {contract.Customer}", 
+                    PaymentHistories = contract.PaymentHistories 
+                });
             }
         }
 
