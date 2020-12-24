@@ -44,7 +44,7 @@
                                 EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
 
                             <materialDesign:DataGridTextColumn
-                                Binding="{Binding PaymentTime}"
+                                Binding="{Binding PaymentTime, StringFormat='dd/MM/yyyy'}"
                                 Header="Tarix"
                                 EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
 
@@ -108,7 +108,7 @@
 
                                         <DataGrid.Columns>
                                             <materialDesign:DataGridTextColumn
-                                            Binding="{Binding PaymentTime}"
+                                            Binding="{Binding PaymentTime, StringFormat='dd/MM/yyyy'}"
                                             Header="Tarix"
                                             EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
 
