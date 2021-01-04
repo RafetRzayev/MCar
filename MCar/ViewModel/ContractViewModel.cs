@@ -522,6 +522,14 @@ namespace MCar.ViewModel
             foreach (var c in MainWindow.Data.Contracts)
             {
 
+                if (SelectedContractType == ContractType.Actual)
+                    if (c.IsClose)
+                        continue;
+
+                if (SelectedContractType == ContractType.Closed)
+                    if (!c.IsClose)
+                        continue;
+
                 if (!string.IsNullOrEmpty(SearchCustomer))
                 {
                     if (c.Customer.ToString().Replace(" ","")
@@ -583,7 +591,7 @@ namespace MCar.ViewModel
         {
             ContractList.Clear();
 
-            MainWindow.Data.Contracts.ForEach(c => ContractList.Add(c));
+            SelectedContractType = ContractType.All;
 
             SearchCustomer = string.Empty;
             SearchMediator = string.Empty;
