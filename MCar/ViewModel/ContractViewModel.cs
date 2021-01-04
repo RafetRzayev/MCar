@@ -34,6 +34,36 @@ namespace MCar.ViewModel
 
         #region Properties
 
+        public ObservableCollection<ContractType> ContractTypeList { get; set; } = new ObservableCollection<ContractType>
+        {
+            ContractType.All,
+            ContractType.Actual,
+            ContractType.Closed
+        };
+
+        private ContractType _selectedContractType = ContractType.Actual;
+        public ContractType SelectedContractType
+        {
+            get => _selectedContractType;
+            set
+            {
+                Set(() => SelectedContractType, ref _selectedContractType, value);
+
+                if (SelectedContractType == ContractType.All)
+                {
+                    FillAllReportList();
+                }
+                else if (SelectedContractType == ContractType.Actual)
+                {
+                    FillActiveReportList();
+                }
+                else
+                {
+                    FillClosedReportList();
+                }
+            }
+        }
+
         public ObservableCollection<Car> FullCarList { get; set; }
 
         public ObservableCollection<Car> CarList { get; set; }
@@ -284,6 +314,39 @@ namespace MCar.ViewModel
             FullCarList = new ObservableCollection<Car>(MainWindow.Data.Cars);
             FillActiveCarList();
             ContractList = new ObservableCollection<Contract>(MainWindow.Data.Contracts);
+        }
+
+        private void FillAllReportList()
+        {
+            ContractList.Clear();
+
+            MainWindow.Data.Contracts.ForEach(x => ContractList.Add(x));
+        }
+
+        private void FillClosedReportList()
+        {
+            ContractList.Clear();
+
+            foreach (var c in MainWindow.Data.Contracts)
+            {
+                if (c.IsClose)
+                {
+                    ContractList.Add(c);
+                }
+            }
+        }
+
+        private void FillActiveReportList()
+        {
+            ContractList.Clear();
+
+            foreach (var c in MainWindow.Data.Contracts)
+            {
+                if (!c.IsClose)
+                {
+                    ContractList.Add(c);
+                }
+            }
         }
 
         private void FillActiveCarList()

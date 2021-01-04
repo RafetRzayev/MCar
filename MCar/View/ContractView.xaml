@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:utils="clr-namespace:MCar.Utils"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="710">
 
     <UserControl.Resources>
         <ResourceDictionary>
+            <utils:EnumDescriptionConverter x:Key="EnumConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Style\Common.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
@@ -237,6 +238,19 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal"
                     HorizontalAlignment="Right" Margin="0 0 4 0">
 
+            <ComboBox 
+                 Width="140"
+                 Margin="0 0 20 0"
+                 materialDesign:HintAssist.Hint="Müqavilə tipini seçin"
+                 ItemsSource="{Binding ContractTypeList}"
+                 SelectedItem="{Binding SelectedContractType}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource EnumConverter}}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            
             <Label Content="Süzgəc" FontWeight="DemiBold"/>
             <materialDesign:PopupBox StaysOpen="True">
                 <materialDesign:PopupBox.ToggleContent>
