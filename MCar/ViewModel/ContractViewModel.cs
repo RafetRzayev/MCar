@@ -41,7 +41,7 @@ namespace MCar.ViewModel
             ContractType.Closed
         };
 
-        private ContractType _selectedContractType = ContractType.Actual;
+        private ContractType _selectedContractType;
         public ContractType SelectedContractType
         {
             get => _selectedContractType;
@@ -51,15 +51,15 @@ namespace MCar.ViewModel
 
                 if (SelectedContractType == ContractType.All)
                 {
-                    FillAllReportList();
+                    FillAllContractList();
                 }
                 else if (SelectedContractType == ContractType.Actual)
                 {
-                    FillActiveReportList();
+                    FillActiveContractList();
                 }
                 else
                 {
-                    FillClosedReportList();
+                    FillClosedContractList();
                 }
             }
         }
@@ -86,7 +86,7 @@ namespace MCar.ViewModel
             }
         }
 
-        public ObservableCollection<Contract> ContractList { get; set; }
+        public ObservableCollection<Contract> ContractList { get; set; } = new ObservableCollection<Contract>();
 
         private Contract _selectedContract;
         public Contract SelectedContract
@@ -313,17 +313,17 @@ namespace MCar.ViewModel
         {
             FullCarList = new ObservableCollection<Car>(MainWindow.Data.Cars);
             FillActiveCarList();
-            ContractList = new ObservableCollection<Contract>(MainWindow.Data.Contracts);
+            SelectedContractType = ContractType.Actual;
         }
 
-        private void FillAllReportList()
+        private void FillAllContractList()
         {
             ContractList.Clear();
 
             MainWindow.Data.Contracts.ForEach(x => ContractList.Add(x));
         }
 
-        private void FillClosedReportList()
+        private void FillClosedContractList()
         {
             ContractList.Clear();
 
@@ -336,7 +336,7 @@ namespace MCar.ViewModel
             }
         }
 
-        private void FillActiveReportList()
+        private void FillActiveContractList()
         {
             ContractList.Clear();
 
