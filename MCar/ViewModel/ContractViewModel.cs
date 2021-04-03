@@ -214,8 +214,8 @@ namespace MCar.ViewModel
             }
         }
 
-        private int _contractNumber;
-        public int ContractNumber
+        private string _contractNumber;
+        public string ContractNumber
         {
             get => _contractNumber;
             set

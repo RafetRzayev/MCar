@@ -11,7 +11,7 @@ namespace MCar.Model
     public class Contract
     {
         public string Id { get; set; }
-        public int ContractNumber { get; set; }
+        public string ContractNumber { get; set; }
         public Person Customer { get; set; }
         public Mediator Mediator { get; set; }
         public Car Car { get; set; }
